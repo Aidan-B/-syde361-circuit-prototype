@@ -56,6 +56,9 @@ String getFriendlyTime();
 
 /*!
   @brief  Finds a filename that is not currently in use on the SD card
+
+  @param  get_last_filename
+          Specify that the last used filename should be used again
 */
-String getFilename();
+String getFilename(bool get_last_filename = false);
 #endif //__UTIL_H__

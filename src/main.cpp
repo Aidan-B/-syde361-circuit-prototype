@@ -73,6 +73,12 @@ void setup()
     error_handler("Unable to init mood CSV");
   }
 
+  // Check if the power was killed during a recording for some reason and continue from that state
+  if (SD.exists(RECORDING_STATE_FILENAME.c_str())) {
+    is_sleeping = true;
+    nightly_recording.init(getFilename(true), SD, nightly_csv_columns, NIGHTLY_NUM_COLUMNS);
+  }
+
   survey = Survey(
     SURVEY_BUTTON_0_PIN,
     SURVEY_BUTTON_1_PIN,
@@ -188,6 +194,11 @@ void loop()
       if (!nightly_recording.init(getFilename(), SD, nightly_csv_columns, NIGHTLY_NUM_COLUMNS)){
         error_handler("Unable to start new CSV");
       }
+      // Save the fact that we are recording in case of power loss
+      File file = SD.open(RECORDING_STATE_FILENAME.c_str(), FILE_WRITE);
+      file.close();
+    } else {
+      SD.remove(RECORDING_STATE_FILENAME.c_str());
     }
   }
 

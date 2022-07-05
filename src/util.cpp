@@ -145,12 +145,14 @@ String getFriendlyTime()
     return output;
 }
 
-String getFilename() {
+String getFilename(bool get_last_filename) {
   String filename = "Recording_1.csv";
   int i = 1;
+  String last_filename = filename;
   while (SD.exists(filename.c_str())) {
+    if (get_last_filename) {last_filename = filename;}
     filename = "Recording_" + (String)i + ".csv";
     i++;
   }
-  return filename;
+  return get_last_filename ? filename : last_filename;
 }
