@@ -1816,7 +1816,7 @@
     (property "Reference" "C1" (id 0) (at 148.59 73.66 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "12nF" (id 1) (at 148.59 76.2 0)
+    (property "Value" "150N" (id 1) (at 148.59 76.2 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "" (id 2) (at 152.0952 78.74 0)
@@ -1884,7 +1884,7 @@
     (property "Reference" "R1" (id 0) (at 158.75 73.66 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "10K" (id 1) (at 158.75 76.2 0)
+    (property "Value" "1K" (id 1) (at 158.75 76.2 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "" (id 2) (at 154.432 74.93 90)
@@ -2604,7 +2604,7 @@
     (property "Reference" "R0" (id 0) (at 152.4 66.04 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "R_Photo" (id 1) (at 152.4 68.58 0)
+    (property "Value" "5K" (id 1) (at 152.4 68.58 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "" (id 2) (at 152.4 60.96 90)
@@ -2689,7 +2689,7 @@
       (reference "BT1") (unit 1) (value "Coin_Cell") (footprint "")
     )
     (path "/31bc59c1-557f-4297-a5a8-395f00864f6f"
-      (reference "C1") (unit 1) (value "12nF") (footprint "")
+      (reference "C1") (unit 1) (value "150N") (footprint "")
     )
     (path "/4a8bf6e1-ec1c-453e-bde6-002c614c4299"
       (reference "D0") (unit 1) (value "LED_Dual_KKA") (footprint "")
@@ -2704,10 +2704,10 @@
       (reference "LB") (unit 1) (value "SW_Push") (footprint "")
     )
     (path "/ff8fe31f-0ec9-4426-89b1-0ee4d070bf6f"
-      (reference "R0") (unit 1) (value "R_Photo") (footprint "")
+      (reference "R0") (unit 1) (value "5K") (footprint "")
     )
     (path "/4089ab65-ea0c-4b85-b5b8-71733e0c4771"
-      (reference "R1") (unit 1) (value "10K") (footprint "")
+      (reference "R1") (unit 1) (value "1K") (footprint "")
     )
     (path "/838d8e57-d240-46d7-a070-ebe73b09ea82"
       (reference "R2") (unit 1) (value "640R") (footprint "")

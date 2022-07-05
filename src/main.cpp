@@ -29,7 +29,7 @@ CSVHandler nightly_recording;
 CSVHandler mood;
 Survey survey;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
-DHT dht(DHT11_PIN, DHT_TYPE);
+DHT temp_sensor(DHT11_PIN, DHT_TYPE);
 
 static bool is_sleeping = false;
 static bool recording_message_displayed = false;
@@ -38,6 +38,9 @@ void setup()
 {
   Serial.begin(BAUD_RATE);
   // while (!Serial); // Wait for serial connection before starting
+
+  // Increase the resolution so we can see the small changes in brightness
+  analogReadResolution(13);
 
   // Setup clock
   setSyncProvider(getTeensy3Time);
@@ -48,7 +51,7 @@ void setup()
 
   // Setup peripherals
   lcd.begin(16, 2);
-  dht.begin();
+  temp_sensor.begin();
   red_led = LED(RED_LED_PIN);
   green_led = LED(GREEN_LED_PIN);
   light_sensor = LightSensor(LIGHTSENSOR_PIN);
@@ -128,14 +131,14 @@ void loop()
     if (time_since_measure > MEASUREMENT_INTERVAL) {
       time_since_measure -= MEASUREMENT_INTERVAL;
 
-      float humidity = dht.readHumidity();
-      float temp =dht.readTemperature();
-      float brightness = light_sensor.brightness();
+      float humidity = temp_sensor.readHumidity();
+      float temp = temp_sensor.readTemperature();
+      char brightness[20];
+      snprintf(brightness, sizeof(brightness), "%.12f", light_sensor.brightness()); //save 12 decimal places of resolution
       
       if (isnan(humidity) || isnan(temp)) {
         error_handler("Failed to read from DHT sensor!");
       }
-      
 
       String columns[NIGHTLY_NUM_COLUMNS] =
         {
@@ -213,7 +216,7 @@ void loop()
   // Print Temperature & Brightness to LCD on big button press
   if (big_button.isPressed()) {
       lcd.setCursor(0, 0);
-      lcd.printf("Temp: %f        ", dht.readTemperature());
+      lcd.printf("Temp: %f        ", temp_sensor.readTemperature());
       lcd.setCursor(0, 1);
       lcd.printf("Light: %f       ", light_sensor.brightness());
   }

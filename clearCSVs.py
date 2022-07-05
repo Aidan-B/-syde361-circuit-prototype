@@ -1,5 +1,4 @@
 import serial.tools.list_ports
-import time
 
 for port in serial.tools.list_ports.comports():
     # Teensyduino Serial Device

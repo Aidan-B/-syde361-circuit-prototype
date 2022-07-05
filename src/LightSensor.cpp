@@ -1,6 +1,9 @@
 #include "LightSensor.h"
+#include <Arduino.h>
 
-float LightSensor::brightness() {
-    int reading = read();
-    return (reading * reading * 0.000225f); //just a quickly calculated polynomial fit to the measured data
+double LightSensor::brightness() {
+    // This needs to be calibrated
+    return read();
+    
+    // return pow((double)read() / 3600, 10);; //just a quickly calculated polynomial fit to the measured data
 }

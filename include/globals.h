@@ -43,6 +43,6 @@ static const char PRINT_COMMAND = 'P';
 static const char CLEAR_COMMAND = 'C';
 
 // Recording state
-static const String RECORDING_STATE_FILENAME = ".recording"
+static const String RECORDING_STATE_FILENAME = ".recording";
 
 #endif //__GLOBALS_H__

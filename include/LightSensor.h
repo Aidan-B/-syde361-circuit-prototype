@@ -25,7 +25,7 @@ public:
 
   @return The measured brighness in Lux
 */
-  float brightness();
+  double brightness();
 };
 
 #endif //__LIGHTSENSOR_H__

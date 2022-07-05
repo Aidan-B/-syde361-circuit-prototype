@@ -1,5 +1,4 @@
 import serial.tools.list_ports
-import time
 
 for port in serial.tools.list_ports.comports():
     # Open serial port of Teensyduino Serial Device (USB ID 16C0:0483)
