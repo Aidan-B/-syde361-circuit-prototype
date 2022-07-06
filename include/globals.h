@@ -30,8 +30,8 @@ static String mood_csv_columns[MOOD_NUM_COLUMNS] = {"timestamp", "date", "time",
 static const int rs = 1, en = 0, d4 = 2, d5 = 3, d6 = 4, d7 = 5; // LCD pins
 static const int LCD_BRIGHTNESS_PIN = A17;
 
-static const int MEASUREMENT_INTERVAL = 60 * 1000; //ms
-static const int RECORDING_MESSAGE_DELAY = 5 * 1000; //ms
+static const int MEASUREMENT_INTERVAL = 60 * 1000; // 1 minute
+static const int RECORDING_MESSAGE_DELAY = 5 * 1000; // 5 seconds
 
 // Temperature Sensor
 static const int DHT11_PIN = 6;

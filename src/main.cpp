@@ -95,8 +95,7 @@ void setup()
 void loop()
 {
   updateButtons();
-  analogWrite(LCD_BRIGHTNESS_PIN,  light_sensor.brightness());
-    // brightness < 20 ? 0: brightness / 4 ); //Dim the LCD when it's dark, turn it off in the dark
+  analogWrite(LCD_BRIGHTNESS_PIN,  (light_sensor.read() >> 5)); //Dim the LCD when it's dark, convert from 13 bit to 8 bit integer
 
   // Interpret serial commands
   if (Serial.available()) { 
@@ -134,8 +133,8 @@ void loop()
       float humidity = temp_sensor.readHumidity();
       float temp = temp_sensor.readTemperature();
       char brightness[20];
-      snprintf(brightness, sizeof(brightness), "%.12f", light_sensor.brightness()); //save 12 decimal places of resolution
-      
+      snprintf(brightness, sizeof(brightness), "%.3f", light_sensor.brightness()); //save 3 decimal places of resolution
+
       if (isnan(humidity) || isnan(temp)) {
         error_handler("Failed to read from DHT sensor!");
       }
